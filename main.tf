@@ -42,7 +42,7 @@ resource "azurerm_network_security_group" "p4-sg" {
 
   tags = {
     environment = "Dev"
-  }  
+  }
 }
 
 resource "azurerm_network_security_rule" "p4-rule" {
