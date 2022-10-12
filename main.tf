@@ -82,19 +82,17 @@ resource "azurerm_network_interface" "p4-nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "p4-vm" {
-  name                = "p4-vm"
-  resource_group_name = azurerm_resource_group.rgproject4.name
-  location            = azurerm_resource_group.rgproject4.location
-  size                = "Standard_D2as_v4"
-  admin_username      = "adminuser"
+  name                            = "p4-vm"
+  resource_group_name             = azurerm_resource_group.rgproject4.name
+  location                        = azurerm_resource_group.rgproject4.location
+  size                            = "Standard_D2as_v4"
+  admin_username                  = "adminuser"
+  admin_password                  = "abc59!"
+  disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.p4-nic.id,
   ]
 
-  admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("/Users/gunwathecreator/devopslearn/key/project4azurekey.pub")
-  }
 
   os_disk {
     caching              = "ReadWrite"
