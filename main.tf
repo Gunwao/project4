@@ -2,9 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.26.0"
+      version = "~> 3.0.2"
     }
   }
+
+  required_version = ">= 1.1.0"
 }
 
 provider "azurerm" {
@@ -13,7 +15,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rgproject4" {
   name     = "rgproject4"
-  location = "West Us 3"
+  location = "West Europe"
 }
 
 resource "azurerm_virtual_network" "vnetp4" {
@@ -60,7 +62,7 @@ resource "azurerm_network_security_rule" "p4-rule" {
 }
 
 
-resource "azurerm_subnet_network_security_group_association" "example" {
+resource "azurerm_subnet_network_security_group_association" "p4-snsga" {
   subnet_id                 = azurerm_subnet.p4-subnet.id
   network_security_group_id = azurerm_network_security_group.p4-sg.id
 }
@@ -85,7 +87,7 @@ resource "azurerm_linux_virtual_machine" "p4-vm" {
   name                            = "p4-vm"
   resource_group_name             = azurerm_resource_group.rgproject4.name
   location                        = azurerm_resource_group.rgproject4.location
-  size                            = "Standard_D2as_v4"
+  size                            = "Standard_B1s"
   admin_username                  = "adminuser"
   admin_password                  = "abc59!"
   disable_password_authentication = false
