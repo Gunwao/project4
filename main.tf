@@ -93,7 +93,7 @@ resource "azurerm_linux_virtual_machine" "p4-vm" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = file("/Users/gunwathecreator/devopslearn/project4/key/project4azurekey.pub")
+    public_key = file("/Users/gunwathecreator/devopslearn/key/project4azurekey.pub")
   }
 
   os_disk {
