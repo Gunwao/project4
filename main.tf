@@ -13,7 +13,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rgproject4" {
   name     = "rgproject4"
-  location = "west europe"
+  location = "West Us 3"
 }
 
 resource "azurerm_virtual_network" "vnetp4" {
